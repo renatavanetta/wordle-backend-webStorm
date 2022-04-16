@@ -28,9 +28,6 @@ app.post('/startGame', async(req, res) => {
         let playerInfo = playerList.get(userId);
         let newWord = Word.randomWord();
         playerInfo.startNewGame(newWord);
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
         res.status(200).json({message: 'new game starting'});
     } else {
         player = new Player(userId, Word.randomWord(), true, false, 0, 0, 0)
@@ -41,7 +38,6 @@ app.post('/startGame', async(req, res) => {
 app.post('/checkword', async(req, res) => {
     const userId = req.body.id;
     const sentWord = req.body.sentWord.toUpperCase();
-    
 
     if(playerList.has(userId)){
         let playerInfo = playerList.get(userId); //recupera todas as informações do usuario

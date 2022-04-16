@@ -32,6 +32,7 @@ function compareWords(playerInfo, sentWord) {
 
         if(currentLine == 5){
             playerInfo.lose();
+            playerInfo.addNumberOfPlays();
             answerMap.set("status", "gameOver");
             answerMap.set("pastWord", userWord);
             answerMap.set("currentStreak", playerInfo.currentStreak)
