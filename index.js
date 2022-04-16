@@ -22,16 +22,15 @@ app.post('/startGame', async(req, res) => {
     let userId = req.body.id;
     let player;
 
-    if(playerList.has(userId)){
-        playerInfo = playerList.get(userId);
+    if (playerList.has(userId)) {
+        let playerInfo = playerList.get(userId);
         let newWord = Word.randomWord();
         playerInfo.startNewGame(newWord);
         res.status(200).json({message: 'new game starting'})
-    }else{
+    } else {
         player = new Player(userId, Word.randomWord(), true, false, 0, 0, 0)
         playerList.set(player.id, player);
     }
-
 })
 
 app.post('/checkword', async(req, res) => {
