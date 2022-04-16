@@ -8,7 +8,7 @@ const app = express();
 const cors = require('cors');
 app.use(express.json());
 app.use(cors({
-    origin: "https://wordle-clone-pug-1-0.herokuapp.com",
+    origin: "*",
 }));
 
 const port = process.env.PORT || 3001;
