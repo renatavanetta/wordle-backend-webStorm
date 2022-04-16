@@ -13,12 +13,12 @@ const port = process.env.PORT || 3001;
 
 let playerList = new Map();
 
-app.get('/userId', (req, res) => {
+app.get('/userId', async (req, res) => {
     let userId = uniqueId();
     res.status(200).json({id: userId});
 })
 
-app.post('/startGame', (req, res) => {
+app.post('/startGame', async(req, res) => {
     let userId = req.body.id;
     let player;
 
@@ -34,7 +34,7 @@ app.post('/startGame', (req, res) => {
 
 })
 
-app.post('/checkword', (req, res) => {
+app.post('/checkword', async(req, res) => {
     const userId = req.body.id;
     const sentWord = req.body.sentWord.toUpperCase();
     
@@ -63,7 +63,7 @@ app.post('/checkword', (req, res) => {
     }
 })
 
-app.post('/deleteUser', (req, res) =>{
+app.post('/deleteUser', async(req, res) =>{
     let userId = req.body.id;
     playerList.delete(userId);
     res.status(200).json({message: "bye!"})
